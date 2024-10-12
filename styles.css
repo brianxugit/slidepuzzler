@@ -6,26 +6,35 @@ html, body {
 }
 body {
     background-color:rgb(174, 186, 202);
-}
-.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+.container {
+    height: auto;
+    width: auto;
+}
 
 .board {
-    height: 40vh;
-    width: 40vw;
     display: flex;
     flex-wrap: wrap;
     position: relative;
 
-    background: rgb(246, 244, 255);
+    background: rgb(224, 226, 237);
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 40px;
 }
+
+.cell {
+    position: absolute;
+    padding: 5px;
+    box-sizing: border-box;
+    outline: dashed;
+    outline-offset: -1px;
+}
+
 .settings {
     display: flex;
     align-items: center;

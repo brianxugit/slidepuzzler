@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="./styles.css">
     <script src="./scripts/game.js" defer></script>
+    <script src="./scripts/board.js" defer></script>
     <script src="./scripts/cell.js" defer></script>
     <script src="./scripts/index.js" defer></script>
 </head>
@@ -16,9 +17,9 @@
 
     <div class="settings">
         <p><label for='Set Dimensions'></label></p>
-        <input type="text" id="rows" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 50 && event.charCode <= 57" />
-        &nbsp;x&nbsp;
         <input type="text" id="cols" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 50 && event.charCode <= 57" />
+        &nbsp;x&nbsp;
+        <input type="text" id="rows" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 50 && event.charCode <= 57" />
         &nbsp;
         <button id="set_dimensions">set</button>
     </div>

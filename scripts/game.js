@@ -1,39 +1,35 @@
 class Game {
     constructor(rows, cols) {
-        this.board = document.querySelector('.board');
         this.rows = rows;
         this.cols = cols;
 
-        this.init(this.board, this.rows, this.cols)
+        this.init(this.rows, this.cols)
     }
 
-    init(board, rows, cols) {
-        // create the board as 2d array of cells defined for a m x n board as
-        // [0, 0] [1, 0] ... [m-1, 0]          [1] [2] ... [m-1]
-        // [0, 1]  ...                  ==>>   [m] [m+1] ... [m+m-1]
-        //  ...          ...   
-        // [n-1, 0]          [m-1, n-1]
-        // cells are initialized in a solved state and retain their "placement" as id
-        // for an m x n board, cells have IDs {1...m*n-1}
-        // s.t. for a given board m x n in dimension, a cell(x,y) has ID = x + y*(m-1) + 1
-        
-        //let cells = [rows][cols];
-        // or do it with a single array using modulo to read coords
+    init(rows, cols) {
+        this.board = new Board(rows, cols);
+        this.boardHTML = this.board.board;
 
-        // another terrible idea is to never move cells but instead define position as a property of the cell, not the array
-        // thats awful
-        let cells = [];
-        
-        for (let i = 0; i < rows * cols; i++) {
-            const cell = new Cell({
-                id: i,
-            }, board, rows, cols);
-            cells.push(cell);
-        }
-        console.log(cells);
+        this.boardHTML.addEventListener("mouseover", this.mouseoverHandler);
+        this.boardHTML.addEventListener("mouseleave", this.mouseleaveHandler);
+        this.boardHTML.addEventListener("click", this.clickHandler);
     }
 
-    static debug() {
-        console.log(cells);
+    mouseoverHandler(event) {
+        //console.log("mouse over board");
+    }
+    mouseleaveHandler(event) {
+        //console.log("mouse leave board");
+    }
+    clickHandler(event) {
+        console.log(event);
+    }
+
+    end() {
+        this.board.clear();
+    }
+
+    updateWindow() {
+        this.board.resize();
     }
 }

@@ -1,6 +1,12 @@
 let rows = 0;
 let cols = 0;
 
+let game;
+
+window.addEventListener("resize", updateWindow); // TODO ; probably use a timer to limit frequency or based on drag and release
+
+// hardcode sizes for now figure out scaling options later
+
 document.getElementById("set_dimensions").addEventListener('click', setDimensions);
 
 function setDimensions() {
@@ -12,6 +18,22 @@ function setDimensions() {
 }
 
 function initGame() {
-    let game = new Game(rows, cols);
+    if (game != undefined)  {
+        game.end();
+    }
+
+    game = new Game(rows, cols);
     console.log(game);
 }
+
+function updateWindow() {
+    console.log("you resized me");
+    game.updateWindow();
+}
+
+function debugInit() {
+    document.getElementById("rows").value = 3;
+    document.getElementById("cols").value = 4;
+}
+
+debugInit();
