@@ -28,10 +28,9 @@ class Cell {
     }
     mousedownHandler = (event) => {
         this.isHeld = true;
-        console.log(`${this.id} is ${this.isHeld}`);
-        let x = event.clientX;
-        let y = event.clientY;
-        this.move(x, y);
+        // let x = event.clientX;
+        // let y = event.clientY;
+        // this.move(x, y);
     }
 
     createElement(board, id, rows, cols) {
@@ -40,11 +39,12 @@ class Cell {
         // but fix board to square so just width/ max(# rows, col)
         let cellSize = Math.min(board.offsetWidth, board.offsetHeight) / Math.max(rows, cols);
         
-        this.element = document.createElement('div', {
-            className: "cell", //this doesnt do anything
-        });
+        this.element = document.createElement('div');
         this.element.className = "cell";
         this.element.id = id;
+        if (id == "hole") {
+            this.element.className = "cell hole";
+        }
         this.element.addEventListener('mousedown', this.mousedownHandler);
         // mouseup needs to be handled globally
 
@@ -54,7 +54,7 @@ class Cell {
         this.debug();
     }
 
-    place(x, y) {
+    put(x, y) {
         this.element.style.left = x;
         this.element.style.top = y;
     }
@@ -69,5 +69,9 @@ class Cell {
         //console.log(this.element);
         //console.log(this.board.offsetWidth);
         this.element.innerHTML = `${this.id}`;
+    }
+
+    debug_pos(x,y) {
+        this.element.innerHTML = `${this.id}<br>(${x}, ${y})`;
     }
 }

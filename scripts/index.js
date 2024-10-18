@@ -3,6 +3,8 @@ let cols = 0;
 
 let game;
 
+let difficulty = 100;
+
 window.addEventListener("resize", updateWindow); // TODO ; probably use a timer to limit frequency or based on drag and release
 
 // hardcode sizes for now figure out scaling options later
@@ -22,7 +24,7 @@ function initGame() {
         game.end();
     }
 
-    game = new Game(rows, cols);
+    game = new Game(rows, cols, difficulty);
     console.log(game);
 }
 

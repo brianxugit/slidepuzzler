@@ -33,6 +33,20 @@ body {
     box-sizing: border-box;
     outline: dashed;
     outline-offset: -1px;
+    z-index: 2;
+
+    font-size: x-small;
+    background-color: rgb(193, 206, 223);
+}
+
+.cell.hole {
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+}
+
+.cell.movable:hover {
+    background-color: green;
+    cursor: pointer;
 }
 
 .settings {

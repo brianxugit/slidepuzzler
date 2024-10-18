@@ -1,13 +1,15 @@
 class Game {
-    constructor(rows, cols) {
+    constructor(rows, cols, shuffleCount) {
         this.rows = rows;
         this.cols = cols;
+        this.shuffleCount = shuffleCount;
 
-        this.init(this.rows, this.cols)
+        this.init(this.rows, this.cols, this.shuffleCount)
     }
 
-    init(rows, cols) {
-        this.board = new Board(rows, cols);
+    init(rows, cols, shuffleCount) {
+        this.board = new Board(rows, cols, shuffleCount);
+        //this.board.move.bind();
         this.boardHTML = this.board.board;
 
         this.boardHTML.addEventListener("mouseover", this.mouseoverHandler);
@@ -21,8 +23,12 @@ class Game {
     mouseleaveHandler(event) {
         //console.log("mouse leave board");
     }
-    clickHandler(event) {
-        console.log(event);
+    clickHandler = (event) => {
+        event.target.classList.forEach(value => {
+            if (value == "movable") {
+                this.board.move(event.target.id);
+            }
+        });
     }
 
     end() {
