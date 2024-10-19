@@ -90,6 +90,7 @@ class Board {
 
     placeCells() {
         for (let i = 0; i < this.rows * this.cols; i++) {
+            if(this.cells[i] == undefined) continue;
             this.cells[i].put(this.grid[i].x, this.grid[i].y);
         }
     }
@@ -260,8 +261,13 @@ class Board {
         return true;
     }
 
-    win() {
+    openPopup(id) {
+        document.getElementById(id).classList.add('open');
+        document.body.classList.add('popup-open');
+    }
 
+    win() {
+        this.openPopup('win');
     }
 
     clear() {

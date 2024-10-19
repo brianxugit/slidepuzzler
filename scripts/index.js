@@ -5,6 +5,9 @@ let game;
 
 let difficulty = 100;
 
+let min = 2;
+let max = 24;
+
 window.addEventListener("resize", updateWindow); // TODO ; probably use a timer to limit frequency or based on drag and release
 
 // hardcode sizes for now figure out scaling options later
@@ -12,11 +15,21 @@ window.addEventListener("resize", updateWindow); // TODO ; probably use a timer 
 document.getElementById("set_dimensions").addEventListener('click', setDimensions);
 
 function setDimensions() {
+    
     rows = document.getElementById("rows").value;
     cols = document.getElementById("cols").value;
-    console.log(rows + " " + cols);
+
+    if (rows < min || cols < min || rows > max || cols > max) {
+        openPopup('setup');
+        return;
+    }
     
     initGame();
+}
+
+function resetGame() {
+    game.end();
+    closePopup();
 }
 
 function initGame() {
@@ -36,6 +49,15 @@ function updateWindow() {
 function debugInit() {
     document.getElementById("rows").value = 3;
     document.getElementById("cols").value = 4;
+}
+// god
+function openPopup(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.classList.add('popup-open');
+}
+function closePopup() {
+    document.querySelector('.popup.open').classList.remove('open');
+    document.body.classList.remove('popup-open');
 }
 
 debugInit();

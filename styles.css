@@ -16,10 +16,43 @@ body {
     width: auto;
 }
 
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 127;
+
+    background-color: rgba(0,0,0,.6);
+    overflow: auto;
+}
+.popup.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 80vw;
+    width: 500px;
+    margin: 20px;
+    padding: 20px;
+    background: rgb(174, 186, 202);
+}
+body.popup-open {
+    overflow: hidden;
+}
+
 .board {
     display: flex;
     flex-wrap: wrap;
     position: relative;
+
+    width: 30vw;
+    height: 30vw;
 
     background: rgb(224, 226, 237);
     box-sizing: border-box;

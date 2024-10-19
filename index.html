@@ -6,20 +6,35 @@
     <script src="./scripts/board.js" defer></script>
     <script src="./scripts/cell.js" defer></script>
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/popup.js" defer></script>
 </head>
 <body>
-    
+
+<!-- main app container -->
 <div class='container'>
 
-    <div class="board">
-        
+    <!--<button onclick="openPopup('win')">hi</button>-->
+
+    <div id="win" class="popup">
+        <div class="popup-body">
+            <h1>you win</h1><br>
+            <button onclick="resetGame()">reset</button>
+        </div>
     </div>
+
+    <div id="setup" class="popup">
+        <div class="popup-body">
+            <h1>dont be stupid</h1>
+        </div>
+    </div>
+
+    <div class="board"></div>
 
     <div class="settings">
         <p><label for='Set Dimensions'></label></p>
-        <input type="text" id="cols" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 50 && event.charCode <= 57" />
+        <input type="text" id="cols" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
         &nbsp;x&nbsp;
-        <input type="text" id="rows" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 50 && event.charCode <= 57" />
+        <input type="text" id="rows" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
         &nbsp;
         <button id="set_dimensions">set</button>
     </div>
