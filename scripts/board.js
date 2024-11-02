@@ -52,7 +52,7 @@ class Board {
         this.shuffle(this.shuffleCount);
         this.placeCells();
 
-        this.debug_pos();
+        //this.debug_pos();
         //this.debug();
     }
 
@@ -189,7 +189,7 @@ class Board {
         else {
             console.log("not winning");
         }
-        this.debug_pos();
+        //this.debug_pos();
     }
 
     moveCell(cell, hole) {
